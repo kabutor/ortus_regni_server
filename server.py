@@ -67,10 +67,63 @@ def setPlayerStatus():
     print(data)
     print("XAuth: %s" % request.headers['X-Auth-Token'])    
     # Status : 0:offline 1:InMenus 2:Inlobby 3:InMatchmaking (more)
-    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"status":"1"}} ) ,200,)
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"":""}} ) ,200,)
     response.headers["Content-Type"] = "application/json"
  
     return response
+
+# Matchmaking seasons
+@app.route('/api/Leaderboard/GetPlacementSummaryForSeason', methods=['POST'])
+def get_placement_season():
+    data = request.json
+    print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"twopMatches":1, "twopRanking":0, "threepMatches":2, "threepRanking":0, 
+                                                                       "fourpMatches":4, "fourpRanking":0, "leaderboardSeason":8 }} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+ 
+    return response
+
+
+
+# Matchmaking remaining
+@app.route('/api/Leaderboard/GetPlacementMatchesRemaining', methods=['POST'])
+def get_placement_remaining():
+    data = request.json
+    print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"twopMatches":11, "twopRanking":10, "threepMatches":12, "threepRanking":10, 
+                                                                       "fourpMatches":14, "fourpRanking":10, "leaderboardSeason":18 }} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+ 
+    return response
+
+
+
+
+# Get friends
+@app.route('/api/Friends/Get', methods=['GET'])
+def get_friends():
+    #data = request.json
+    #print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    # approved invited blocked pending
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"approved":None,"invited":None,"blocked":None,"pending":None}} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+    return response
+
+# Get Direct Messages (just returns nothing)
+@app.route('/api/Messaging/GetDirectMessagesFor', methods=['POST'])
+def get_direct_messages():
+    data = request.json
+    print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"usrs": None, "msgs": None, "smpsk": None}} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+    print("Get Direct Messages For")
+    return response 
 
 
 #Login emegency Message (Working)
