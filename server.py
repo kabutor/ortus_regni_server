@@ -87,18 +87,55 @@ def get_placement_season():
 
 
 
-# Matchmaking remaining
+# Matchmaking remaining (there is a max games per season per player to do ranks?)
 @app.route('/api/Leaderboard/GetPlacementMatchesRemaining', methods=['POST'])
 def get_placement_remaining():
     data = request.json
     print(data)
     print("XAuth: %s" % request.headers['X-Auth-Token'])    
     
-    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"twopMatches":11, "twopRanking":10, "threepMatches":12, "threepRanking":10, 
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"twopMatches":11, "twopRanking":10, "threepMatches":0, "threepRanking":10, 
                                                                        "fourpMatches":14, "fourpRanking":10, "leaderboardSeason":18 }} ) ,200,)
     response.headers["Content-Type"] = "application/json"
  
     return response
+
+# Request Match
+@app.route('/api/Matches/RequestMatch', methods=['POST'])
+def request_match():
+    data = request.json
+    print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"":None }} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+ 
+    return response
+# Request Match Status
+@app.route('/api/Matches/RequestStatus', methods=['GET'])
+def request_match_status():
+    print("Get Status")
+    print("XAuth: %s" % request.headers['X-Auth-Token'])   
+
+    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"":None }} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+ 
+    return response
+
+# DeleteRequest Match
+@app.route('/api/Matches/DeleteRequest', methods=['POST'])
+def delete_request_match():
+    data = request.json
+    print(data)
+    print("XAuth: %s" % request.headers['X-Auth-Token'])    
+    
+    response = make_response(jsonify ( {"code":0,"_ex:":"","payload": {"":None }} ) ,200,)
+    response.headers["Content-Type"] = "application/json"
+ 
+    return response
+
+
 
 
 
