@@ -1,7 +1,12 @@
+// Instructions, compile this code into and exe running this command in a console:
 // C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /t:exe /out:fixortus.exe fixortus.cs
+// Then move the exe to the "Ortus Regni\OrtusRegni_Data\Managed" directory and run the fixortus.exe
+//
+// Readme:
 // This will fix the Assembly-Csharp.dll on the "Ortus Regni\OrtusRegni_Data\Managed" directory
 // the url is on UTF16LE format it will remove S of the secure url. From https://prod.ortusregnicloud.com/api to http://prod.etc... 
 // you can use another url , just create it below as the decimal values in utf16le format (a 0 byte between each normal byte)
+//
 using System;
 using System.Text;
 using Microsoft.Win32;
